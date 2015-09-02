@@ -1,0 +1,7 @@
+web/target/
+core/target/
+web/.settings/
+*.project
+*.classpath
+core/.settings/
+.settings/
