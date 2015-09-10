@@ -5,3 +5,7 @@ web/.settings/
 *.classpath
 core/.settings/
 .settings/
+core/chapter04Create.ddl
+core/chapter04Drop.ddl
+core/create.sql
+core/drop.sql

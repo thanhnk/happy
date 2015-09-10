@@ -1,10 +1,40 @@
 package com.happy.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Entity
+@NamedQueries({ @NamedQuery(name = "findAllBooks", query = "SELECT b FROM Book b"),
+		@NamedQuery(name = "findBookH2G2", query = "SELECT b FROM Book b WHERE b.title ='H2G2'") })
 public class Book {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@NotNull
 	private String title;
 	private Float price;
+	@Size(min = 10, max = 2000)
 	private String description;
-	private String number;
+	private String isbn;
+	private Integer nbOfPage;
+	private Boolean illustrations;
+
+	public Book() {
+	}
+
+	public Book(String title, String description, Float price, String isbn, Integer nbOfPage, Boolean illustrations) {
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.isbn = isbn;
+		this.nbOfPage = nbOfPage;
+		this.illustrations = illustrations;
+	}
 
 	public Book(String title, Float price, String description) {
 		this.title = title;
@@ -12,10 +42,12 @@ public class Book {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "Book: title=" + title + ", price=" + price + ", description="
-				+ description + ", number=" + number;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -42,11 +74,28 @@ public class Book {
 		this.description = description;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
+
+	public Integer getNbOfPage() {
+		return nbOfPage;
+	}
+
+	public void setNbOfPage(Integer nbOfPage) {
+		this.nbOfPage = nbOfPage;
+	}
+
+	public Boolean getIllustrations() {
+		return illustrations;
+	}
+
+	public void setIllustrations(Boolean illustrations) {
+		this.illustrations = illustrations;
+	}
+
 }
